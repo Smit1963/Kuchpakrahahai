@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffcccc;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 20%;
+        }
+        h2 {
+            color: #d63384;
+        }
+        .hint {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .opaque {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 12px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #b82c6d;
+        }
+        .hidden {
+            display: none;
+        }
+        .page {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #ffe6f2;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .active {
+            display: block;
+        }
+        .content {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #b82c6d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Password Screen -->
+    <div id="passwordScreen">
+        <div class="container">
+            <h2>Enter the Secret Code</h2>
+            <p class="hint">Our First Date! ,date?</p>
+            <p class="opaque">ddmmyyyy format</p>
+            <input type="password" id="password" placeholder="Enter code">
+            <button onclick="checkPassword()">Unlock</button>
+        </div>
+    </div>
+
+    <!-- Love Letters Pages -->
+    <div id="lovePages" class="hidden">
+        
+        <!-- Page 1 -->
+        <div class="page active" id="page1">
+            <div class="content">
+                <h2>My Love Letter #1</h2>
+                <p>My dearest Riddhi,  
+                From the moment we met, my world has been brighter...</p>
+                <p>Forever yours,  
+                Panda ❤️</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(2)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="page" id="page2">
+            <div class="content">
+                <h2>My Love Letter #2</h2>
+                <p>Riddhi,  
+                Every moment with you is magical...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(1)">⬅ Previous</button>
+                <button onclick="showPage(3)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="page" id="page3">
+            <div class="content">
+                <h2>My Love Letter #3</h2>
+                <p>Riddhi,  
+                You make every day special just by being you...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(2)">⬅ Previous</button>
+                <button onclick="showPage(4)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Page 4 -->
+        <div class="page" id="page4">
+            <div class="content">
+                <h2>My Love Letter #4</h2>
+                <p>Riddhi,  
+                Your love is the most beautiful gift I’ve ever received...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(3)">⬅ Previous</button>
+                <button onclick="showPage(5)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="page" id="page5">
+            <div class="content">
+                <h2>My Love Letter #5</h2>
+                <p>Riddhi,  
+                Every heartbeat of mine whispers your name...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(4)">⬅ Previous</button>
+                <button onclick="showPage(6)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Page 6 to Page 9 (Same structure) -->
+        <div class="page" id="page6">
+            <div class="content">
+                <h2>My Love Letter #6</h2>
+                <p>Riddhi,  
+                You are my home, my heart, my everything...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(5)">⬅ Previous</button>
+                <button onclick="showPage(7)">Next ➡</button>
+            </div>
+        </div>
+
+        <!-- Final Page 10 -->
+        <div class="page" id="page10">
+            <div class="content">
+                <h2>My Love Letter #10</h2>
+                <p>My forever love,  
+                We’ve come to the last letter, but our love story never ends...</p>
+            </div>
+            <div class="nav-buttons">
+                <button onclick="showPage(9)">⬅ Previous</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            if (password === "02092024") {
+                document.getElementById("passwordScreen").classList.add("hidden");
+                document.getElementById("lovePages").classList.remove("hidden");
+            } else {
+                alert("Wrong password! Think harder, Sunshine 🌻");
+            }
+        }
+
+        function showPage(pageNumber) {
+            var pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById("page" + pageNumber).classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
